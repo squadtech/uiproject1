@@ -126,23 +126,7 @@ class _ActivityState extends State<Activity> {
                               ],
                             ),
                           ),
-                          Expanded(
-                            flex: 2,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 0.0),
-                                  child: Image(
-                                    image: AssetImage('images/whatsapp_icon.png'),
-                                    height: 40.0,
-                                    width: 40.0,
-                                  ),
-                                ),
 
-                              ],
-                            ),
-                          )
                         ],
                       ),
                     ),
