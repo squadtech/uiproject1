@@ -132,47 +132,14 @@ class _ActivityState extends State<Activity> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 10.0),
+                                  padding: const EdgeInsets.only(top: 0.0),
                                   child: Image(
                                     image: AssetImage('images/whatsapp_icon.png'),
-                                    height: 30.0,
-                                    width: 30.0,
+                                    height: 40.0,
+                                    width: 40.0,
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 50.0),
-                                  child: position == 0
-                                      ? Text(
-                                          '10 Likes',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black26,
-                                          ),
-                                        )
-                                      : position == 1
-                                          ? Text(
-                                              '20 Likes',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black26,
-                                              ),
-                                            )
-                                          : position == 2
-                                              ? Text(
-                                                  '15 Likes',
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black26,
-                                                  ),
-                                                )
-                                              : Text(
-                                                  '5 Likes',
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black26,
-                                                  ),
-                                                ),
-                                ),
+
                               ],
                             ),
                           )
