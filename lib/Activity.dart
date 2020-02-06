@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:uiproject/chartscreen1.dart';
 import 'package:uiproject/chartsscreen.dart';
 import 'package:uiproject/main.dart';
 
@@ -221,7 +222,7 @@ class _ActivityState extends State<Activity> {
                 height: 250.0,
 
 
-                child: ChartScreen(),
+                child: ChartScreen1(),
               ),
             ),
           ],

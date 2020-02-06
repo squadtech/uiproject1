@@ -9,6 +9,7 @@ class SubscriberSeries {
   final int subscribers;
   final charts.Color barColor;
 
+
   SubscriberSeries(
 
   {
@@ -16,6 +17,7 @@ class SubscriberSeries {
     @required this.subscribers,
     @required this.barColor
 });
+
 
 
 }

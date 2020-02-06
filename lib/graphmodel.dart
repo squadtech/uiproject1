@@ -17,7 +17,7 @@ class SubscriberChart extends StatelessWidget {
     data:data,
     domainFn: (SubscriberSeries series, _)=> series.year,
     measureFn: (SubscriberSeries series, _)=>series.subscribers,
-    colorFn: (SubscriberSeries series, _)=>series.barColor
+    colorFn: (SubscriberSeries series, _)=>series.barColor,
 
   )
 ];
