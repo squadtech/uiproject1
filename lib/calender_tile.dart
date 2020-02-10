@@ -10,6 +10,16 @@ class CalendarView extends StatefulWidget {
 class _CalendarViewState extends State<CalendarView> {
   CalendarController _calendarController;
   List<String> _dataList = ['User 1', 'User 2', 'User 3'];
+  Icon _searchIcon = Icon(
+    Icons.search,
+    color: Colors.grey,
+  );
+  bool _flag = true;
+  Widget _appBarTitle = Text(
+    'DeadLines',
+    style: TextStyle(
+        color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
+  );
 
   @override
   void initState() {
@@ -20,10 +30,71 @@ class _CalendarViewState extends State<CalendarView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xffeceff1),
+        leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              setState(() {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => myApp()));
+              });
+            }),
+        actions: <Widget>[
+          Container(
+            height: 32.0,
+            width: 50.0,
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(right: 16),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.0),
+              color: Colors.white,
+            ),
+            child: IconButton(
+              onPressed: () {
+                setState(() {
+                  if (_flag) {
+                    _flag = false;
+                    this._searchIcon = Icon(
+                      Icons.cancel,
+                      color: Colors.grey,
+                    );
+                    this._appBarTitle = TextField(
+                      decoration: InputDecoration(hintText: "Search here"),
+                      textInputAction: TextInputAction.search,
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    );
+                  } else {
+                    this._searchIcon = Icon(
+                      Icons.search,
+                      color: Colors.grey,
+                    );
+                    this._appBarTitle = Text(
+                      'DeadLines',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    );
+                    _flag = true;
+                  }
+                });
+              },
+              icon: _searchIcon,
+            ),
+          ),
+        ],
+        title: _appBarTitle,
+      ),
       body: Column(
         children: <Widget>[
           Container(
-            height: 500.0,
+            // height: 400.0,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50),
@@ -34,59 +105,7 @@ class _CalendarViewState extends State<CalendarView> {
               children: <Widget>[
                 Stack(children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(top: 40.0),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: GestureDetector(child: Icon(Icons.arrow_back),
-                            onTap:() {
-                              setState(() {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) =>  myApp()),
-                                );
-                              });
-                            },
-                          ),
-                          flex: 1,
-                        ),
-                        Expanded(
-                          child: Text(
-                            'Deadlines',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 23.0, fontWeight: FontWeight.bold),
-                          ),
-                          flex: 4,
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child:   GestureDetector(
-                            child:Container(
-                              height: 32.0,
-                              width: 50.0,
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(right: 16),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16.0),
-                                color: Colors.white,
-                              ),
-                              child: Icon(Icons.search),
-                            ),
-                            onTap: (){
-
-                            },
-                          )
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 100.0,
-                      left: 20.0,
-                      right: 20.0,
-                    ),
+                    padding: const EdgeInsets.all(20.0),
                     child: Container(
                       height: 310.0,
                       decoration: BoxDecoration(
@@ -100,7 +119,7 @@ class _CalendarViewState extends State<CalendarView> {
                       child: Column(
                         children: <Widget>[
                           Expanded(
-                            flex: 4,
+                            flex: 1,
                             child: TableCalendar(
                                 calendarController: _calendarController),
                           ),
@@ -109,18 +128,16 @@ class _CalendarViewState extends State<CalendarView> {
                     ),
                   ),
                 ]),
-
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10.0, right: 170,bottom: 20.0),
+            padding: const EdgeInsets.only(top: 10.0, right: 170, bottom: 20.0),
             child: Container(
               child: Text(
                 'This Week',
                 textAlign: TextAlign.start,
-                style: TextStyle(
-                    fontSize: 23.0, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -147,7 +164,7 @@ class _CalendarViewState extends State<CalendarView> {
                                 Container(
                                   height: 100.0,
                                   width: 6.0,
-                               //   margin: EdgeInsets.all(8.0),
+                                  //   margin: EdgeInsets.all(8.0),
                                   decoration: BoxDecoration(
                                     color: Colors.redAccent,
                                     borderRadius: BorderRadius.circular(24.0),
@@ -158,7 +175,6 @@ class _CalendarViewState extends State<CalendarView> {
                                     ),
                                   ),
                                 ),
-
                               ],
                             ),
                             flex: 1,
@@ -182,23 +198,20 @@ class _CalendarViewState extends State<CalendarView> {
                                 Text(
                                   'status                           due date',
                                   style: TextStyle(
-                                    color: Colors.black87,
-                                      fontWeight: FontWeight.bold
-                                  ),
+                                      color: Colors.black87,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(
                                   height: 8.0,
                                 ),
-
                                 Row(
                                   children: <Widget>[
                                     Expanded(
-                                      flex: 1, child: Text(
-                                       'High Priority',
-                                      style: TextStyle(
-                                          color: Colors.black54),
-                                    ),
-
+                                      flex: 1,
+                                      child: Text(
+                                        'High Priority',
+                                        style: TextStyle(color: Colors.black54),
+                                      ),
                                     ),
                                     Expanded(
                                       child: Text(
@@ -207,10 +220,7 @@ class _CalendarViewState extends State<CalendarView> {
                                           color: Colors.black54,
                                         ),
                                       ),
-
                                     )
-
-
                                   ],
                                 ),
                               ],

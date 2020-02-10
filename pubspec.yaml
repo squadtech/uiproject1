@@ -30,6 +30,7 @@ dev_dependencies:
   date_utils: ^0.1.0+2
   table_calendar: ^2.2.2
   charts_flutter: ^0.8.1
+  dio: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
